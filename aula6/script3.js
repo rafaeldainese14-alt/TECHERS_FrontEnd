@@ -35,8 +35,8 @@ function mudarTudo(){
     let container = document.getElementById("lista-frutas")
  
     container.innerHTML = ""
-    for(let i = 0; itens.length; i++){
-        container.innerHTML += `<p>Item $(i+1) $(itens[i]) </p>`
+    for(let i = 0;i < itens.length; i++){
+        container.innerHTML += `<p>Item ${i+1} ${itens[i]} </p>`
     }
 
 }
