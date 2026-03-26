@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Seletor de Cor</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+            transition: background-color 0.3s; /* Suaviza a mudança */
+        }
+    </style>
+</head>
+<body>
+
+    <label for="">Colque seu nome aqui</label> <br>
+    <input type="text" value="Colque aqui" id="fname"> <br>
+
+
+
+    <h2>Escolha a cor de fundo:</h2>
+    <!-- Seletor de cor -->
+    <input type="color" id="corSelecionada" value="#ffffff">
+
+    <script>
+        const inputCor = document.getElementById('corSelecionada');
+
+        // Adiciona um evento que escuta a mudança de cor
+        inputCor.addEventListener('input', function() {
+            // Muda a cor de fundo do body
+            document.body.style.backgroundColor = inputCor.value;
+        });
+    </script>
+</body>
+</html>
