@@ -1,86 +1,128 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aula 5</title>
-    <style>
-        .card {
-            border: 2px solid black;
-            width: 250px;
-            text-align: center;
-            box-sizing: border-box;
-            padding: 10px;
-        }
-
-        .img-card {
-            margin: 0;
-            width: 100%;
-            height: auto;
-
-        }
-
-        .info {
-            margin: 0;
-        }
-
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mural de Notas</title>
 </head>
 
-<body>
-    <div id="card1" class="card">
-        <img id="img1" src="" alt="" class="img-card">
-        <h3 id="titulo1" class="titulo"></h3>
-        <p id="info1" class="info"></p>
-    </div>
-    <div class="card">
-        <img src="" alt="" class="img-card">
-        <h3 class="titulo"></h3>
-        <p class="info"></p>
-    </div>
-    <div class="card">
-        <img src="" alt="" class="img-card">
-        <h3 class="titulo"></h3>
-        <p class="info"></p>
-    </div>
-    <div class="card">
-        <img src="" alt="" class="img-card">
-        <h3 class="titulo"></h3>
-        <p class="info"></p>
-    </div>
-    <div class="card">
-        <img src="" alt="" class="img-card">
-        <h3 class="titulo"></h3>
-        <p class="info"></p>
-    </div>
-    <div class="card">
-        <img src="" alt="" class="img-card">
-        <h3 class="titulo"></h3>
-        <p class="info"></p>
-    </div>
-    <div class="card">
-        <img src="" alt="" class="img-card">    
-        <h3 class="titulo"></h3>
-        <p class="info"></p>
-    </div>
-    <div class="card">
-        <img src="" alt="" class="img-card">
-        <h3 class="titulo"></h3>
-        <p class="info"></p>
-    </div>
-    <div class="card">
-        <img src="" alt="" class="img-card">
-        <h3 class="titulo"></h3>
-        <p class="info"></p>
-    </div>
-    <div class="card">
-        <img src="" alt="" class="img-card">
-        <h3 class="titulo"></h3>
-        <p class="info"></p>
-    </div>
-    
-    <script src="script2.js"></script>
-</body>
+<body style="background-color:rgb(255, 248, 151); font-family:Arial; padding:20px;">
 
+<div style="display:flex; gap:20px; align-items:flex-start;">
+
+<!-- caixa adicionar nota -->
+
+<div style="border:5px solid rgb(223, 179, 208); width:230px; padding:15px;
+background:rgb(185, 221, 255); text-align:center;
+box-shadow:6px 6px 12px rgba(0,0,0,0.3);">
+
+<h3>Adicionar nota</h3>
+
+<form id="noteForm">
+
+<label>Título</label><br>
+<input type="text" id="title" style="width:180px;"><br><br>
+
+<label>Conteúdo</label><br>
+<textarea id="content" style="width:180px; height:90px;"></textarea><br><br>
+
+<input type="submit" value="Salvar nota">
+
+</form>
+
+</div>
+
+<!-- mural de notas -->
+
+<div id="board" style="border:5px solid rgb(223, 179, 208);
+background:rgb(185, 221, 255);
+width:700px;
+min-height:400px;
+padding:20px;
+
+display:flex;
+flex-wrap:wrap;
+gap:20px;
+
+box-shadow:6px 6px 12px rgba(151, 250, 105, 0.637);">
+
+<h3 style="width:100%">Minhas notas</h3>
+
+</div>
+
+</div>
+
+<script>
+
+const form = document.getElementById("noteForm");
+const board = document.getElementById("board");
+
+const colors = [
+"#fff59d",
+"#ffccbc",
+"#c8e6c9",
+"#bbdefb",
+"#f8bbd0"
+];
+
+form.addEventListener("submit", function(event){
+
+event.preventDefault();
+
+const title = document.getElementById("title").value;
+const content = document.getElementById("content").value;
+
+const note = document.createElement("div");
+
+const randomColor = colors[Math.floor(Math.random()*colors.length)];
+
+note.style.backgroundColor = randomColor;
+note.style.width = "170px";
+note.style.padding = "12px";
+note.style.borderRadius = "8px";
+note.style.position = "relative";
+note.style.boxShadow = "4px 4px 10px rgba(0,0,0,0.3)";
+note.style.transition = "transform 0.2s";
+
+note.onmouseenter = function(){
+note.style.transform = "scale(1.05)";
+deleteBtn.style.display = "block";
+}
+
+note.onmouseleave = function(){
+note.style.transform = "scale(1)";
+deleteBtn.style.display = "none";
+}
+
+const deleteBtn = document.createElement("button");
+deleteBtn.innerText = "X";
+
+deleteBtn.style.position = "absolute";
+deleteBtn.style.top = "5px";
+deleteBtn.style.right = "5px";
+deleteBtn.style.display = "none";
+
+deleteBtn.onclick = function(){
+note.remove();
+}
+
+const titleElement = document.createElement("h4");
+titleElement.innerText = title;
+
+const contentElement = document.createElement("p");
+contentElement.innerText = content;
+
+note.appendChild(deleteBtn);
+note.appendChild(titleElement);
+note.appendChild(contentElement);
+
+board.appendChild(note);
+
+form.reset();
+
+});
+
+</script>
+
+</body>
 </html>

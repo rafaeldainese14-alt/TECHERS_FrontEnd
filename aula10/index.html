@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Notas</title>
+</head>
+
+<body style="background-color: rgb(255, 255, 255); font-family: Arial;">
+
+<div style="display:flex; gap:20px; align-items:flex-start;">
+
+<!-- caixa adicionar nota -->
+<div style="border:5px solid rgb(238, 238, 238); width:220px; height:300px;
+background-color:white; text-align:center; padding:15px;
+box-shadow:6px 6px 12px rgba(133, 133, 133, 0.3);">
+
+<h3>Adicionar nota</h3>
+
+<form id="noteForm">
+
+<label>Título:</label><br>
+<input type="text" id="title" style="width:180px;"><br><br>
+
+<label>Conteúdo:</label><br>
+<textarea id="content" style="width:180px; height:100px;"></textarea><br><br>
+
+<input type="submit" value="Salvar nota">
+
+</form>
+
+</div>
+
+<!-- div que sempre aparece com as notas -->
+<div id="notesBoard"
+style="border:5px solid rgb(238, 238, 238);
+width:500px;
+min-height:300px;
+background-color:white;
+padding:15px;
+display:flex;
+flex-wrap:wrap;
+gap:15px;
+box-shadow:6px 6px 12px rgba(133, 133, 133, 0.3);">
+
+<h3 style="width:100%;">Minhas notas</h3>
+
+</div>
+
+</div>
+
+<script>
+
+const form = document.getElementById("noteForm");
+const board = document.getElementById("notesBoard");
+
+form.addEventListener("submit", function(event){
+
+event.preventDefault();
+
+const title = document.getElementById("title").value;
+const content = document.getElementById("content").value;
+
+const note = document.createElement("div");
+
+note.style.border = "3px solid lightgray";
+note.style.width = "180px";
+note.style.backgroundColor = "white";
+note.style.padding = "10px";
+note.style.position = "relative";
+note.style.boxShadow = "4px 4px 8px rgba(0,0,0,0.3)";
+
+const deleteBtn = document.createElement("button");
+deleteBtn.innerText = "Excluir";
+
+deleteBtn.style.position = "absolute";
+deleteBtn.style.top = "5px";
+deleteBtn.style.right = "5px";
+deleteBtn.style.display = "none";
+
+note.onmouseenter = function(){
+deleteBtn.style.display = "block";
+}
+
+note.onmouseleave = function(){
+deleteBtn.style.display = "none";
+}
+
+deleteBtn.onclick = function(){
+note.remove();
+}
+
+const titleElement = document.createElement("h4");
+titleElement.innerText = title;
+
+const contentElement = document.createElement("p");
+contentElement.innerText = content;
+
+note.appendChild(deleteBtn);
+note.appendChild(titleElement);
+note.appendChild(contentElement);
+
+board.appendChild(note);
+
+form.reset();
+
+});
+
+</script>
+
+</body>
+</html>
