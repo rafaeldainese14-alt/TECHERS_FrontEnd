@@ -3,20 +3,20 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mural de Notas</title>
+<title>Card social</title>
 </head>
 
-<body style="background-color:rgb(255, 248, 151); font-family:Arial; padding:20px;">
+<body style="background-color:rgb(255, 255, 255); font-family:Arial; padding:20px;">
 
 <div style="display:flex; gap:20px; align-items:flex-start;">
 
 <!-- caixa adicionar nota -->
 
-<div style="border:5px solid rgb(223, 179, 208); width:230px; padding:15px;
-background:rgb(185, 221, 255); text-align:center;
-box-shadow:6px 6px 12px rgba(0,0,0,0.3);">
+<div style="border:5px solid rgb(168, 168, 168); width:230px; padding:15px;
+background:rgb(255, 255, 255); text-align:center;
+box-shadow:6px 6px 12px rgba(0, 0, 0, 0.219);">
 
-<h3>ADICIONAR NOTA</h3>
+<h3>Adicionar card</h3>
 
 <form id="noteForm">
 
@@ -26,16 +26,28 @@ box-shadow:6px 6px 12px rgba(0,0,0,0.3);">
 <label>CONTEÚDO</label><br>
 <textarea id="content" style="width:180px; height:90px;"></textarea><br><br>
 
+<label>Estilo</label><br>
+<select name="" id="">
+    <option value="uau">Dark</option>
+    <option value="uu">Céu</option>
+    <option value="ua">Neon</option>
+
+</select> <br> <br>
+
 <input type="submit" value="Salvar nota">
 
 </form>
 
+
+
 </div>
+
+
 
 <!-- mural de notas -->
 
-<div id="board" style="border:5px solid rgb(223, 179, 208);
-background:rgb(185, 221, 255);
+<div id="board" style="border:5px solid rgb(168, 168, 168);
+background:rgb(255, 255, 255);
 width:700px;
 min-height:400px;
 padding:20px;
@@ -44,9 +56,9 @@ display:flex;
 flex-wrap:wrap;
 gap:20px;
 
-box-shadow:6px 6px 12px rgba(151, 250, 105, 0.438);">
+box-shadow:6px 6px 12px rgba(0, 0, 0, 0.226);">
 
-<h3 style="width:100%">MINHAS NOTAS</h3>
+<h3 style="width:100%"> Minhas Cards sociais</h3>
 
 </div>
 
@@ -58,11 +70,11 @@ const form = document.getElementById("noteForm");
 const board = document.getElementById("board");
 
 const colors = [
-"#fff59d",
-"#ffccbc",
-"#c8e6c9",
-"#bbdefb",
-"#f8bbd0"
+"#000000",
+"#999999",
+"#fffff7",
+"#cbcbcb",
+"#616161"
 ];
 
 form.addEventListener("submit", function(event){
