@@ -1,0 +1,32 @@
+.logo {
+    background-color: rgb(170, 209, 255);
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+    padding-bottom: 5px;
+    /*margin-bottom: 10px; */
+    border-radius: 5px;
+    text-align: center;
+    display: inline;
+}
+
+.links {
+    background-color: rgb(170, 209, 255);
+    color: white;
+    font-weight: bold;
+    padding-bottom: 5px;
+    /*margin-bottom: 10px; */
+    border-radius: 5px;
+    text-align: center;
+    display: inline;
+}
+
+.navbar {
+    display: flex;
+    /*flex-direction: row;
+    gap: 15px;*/
+    align-items: center;
+    justify-content: space-between;
+    height: 70px;
+    background-color: #60acb9;
+    border-radius: 20px;
+}
