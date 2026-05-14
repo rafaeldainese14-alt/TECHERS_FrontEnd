@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mochila do aventureiro</title>
+</head>
+
+<body style="background-color:rgb(255, 255, 255); font-family:Arial; padding:20px;">
+
+<div style="display:flex; gap:20px; align-items:flex-start;">
+
+<!-- caixa adicionar nota -->
+
+<div style="border:5px solid rgb(245, 215, 115); width:230px; padding:15px;
+background:rgb(253, 247, 213); text-align:center;
+box-shadow:6px 6px 12px rgba(0, 0, 0, 0.219);">
+
+<h3>Adicionar item</h3>
+
+<form id="noteForm">
+
+<label>Nome do item</label><br>
+<input type="text" id="title" style="width:180px;"><br><br>
+
+<label>Descrição do item</label><br>
+<textarea id="content" style="width:180px; height:90px;"></textarea><br><br>
+
+<label>Benefícios ou malefícios</label><br>
+<select name="" id="">
+    <option value="uau">+ vida</option>
+    <option value="uu">- vida</option>
+    <option value="ua">+ força</option>
+    <option value="aua">- força</option>
+    <option value="uuu">outro</option>
+
+</select> <br> <br>
+
+<input type="submit" value="Adicionar na mochila">
+
+</form>
+
+
+
+</div>
+
+
+
+<!-- mural de notas -->
+
+<div id="board" style="border:5px solid rgb(245, 215, 115);
+background:rgb(253, 247, 213);
+width:700px;
+min-height:400px;
+padding:20px;
+
+display:flex;
+flex-wrap:wrap;
+gap:20px;
+
+box-shadow:6px 6px 12px rgba(0, 0, 0, 0.226);">
+
+<h3 style="width:100%"> Mochila</h3>
+
+</div>
+
+</div>
+
+<script>
+
+const form = document.getElementById("noteForm");
+const board = document.getElementById("board");
+
+const colors = [
+"#e89bc4",
+"#e89bc4",
+"#a7cedb",
+"#b8e89b"
+];
+
+form.addEventListener("submit", function(event){
+
+event.preventDefault();
+
+const title = document.getElementById("title").value;
+const content = document.getElementById("content").value;
+
+const note = document.createElement("div");
+
+const randomColor = colors[Math.floor(Math.random()*colors.length)];
+
+note.style.backgroundColor = randomColor;
+note.style.width = "170px";
+note.style.padding = "12px";
+note.style.borderRadius = "8px";
+note.style.position = "relative";
+note.style.boxShadow = "4px 4px 10px rgba(0,0,0,0.3)";
+note.style.transition = "transform 0.2s";
+
+note.onmouseenter = function(){
+note.style.transform = "scale(1.05)";
+deleteBtn.style.display = "block";
+}
+
+note.onmouseleave = function(){
+note.style.transform = "scale(1)";
+deleteBtn.style.display = "none";
+}
+
+const deleteBtn = document.createElement("button");
+deleteBtn.innerText = "X";
+
+deleteBtn.style.position = "absolute";
+deleteBtn.style.top = "5px";
+deleteBtn.style.right = "5px";
+deleteBtn.style.display = "none";
+
+deleteBtn.onclick = function(){
+note.remove();
+}
+
+const titleElement = document.createElement("h4");
+titleElement.innerText = title;
+
+const contentElement = document.createElement("p");
+contentElement.innerText = content;
+
+note.appendChild(deleteBtn);
+note.appendChild(titleElement);
+note.appendChild(contentElement);
+
+board.appendChild(note);
+
+form.reset();
+
+});
+
+</script>
+
+</body>
+</html>
